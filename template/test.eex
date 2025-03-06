@@ -1,0 +1,19 @@
+defmodule AletopeltaTest.Year<%= year %>.Day<%= day %> do
+  use ExUnit.Case
+  alias Aletopelta.Year<%= year %>.Day<%= day %>, as: Solution
+
+  test "is part1 working" do
+    assert Belodon.solve(Solution, :part1) == 0
+  end
+
+  test "is part2 working" do
+    assert Belodon.solve(Solution, :part2) == 0
+  end
+
+  test "is part working" do
+    input = ~s"""
+    """
+
+    assert Belodon.solve(Solution, input, :part1) == 0
+  end
+end

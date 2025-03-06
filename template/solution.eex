@@ -1,0 +1,18 @@
+defmodule Aletopelta.Year<%= year %>.Day<%= day %> do
+  defmodule Common do
+    def parse_input(input) do
+    end
+  end
+
+  defmodule Part1 do
+    def execute(input) do
+      Common.parse_input(input)
+    end
+  end
+
+  defmodule Part2 do
+    def execute(input) do
+      Common.parse_input(input)
+    end
+  end
+end
