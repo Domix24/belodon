@@ -15,10 +15,11 @@ defmodule Belodon.MixProject do
       ],
       package: [
         licenses: ["MIT"],
-        links: %{"github" => "github.com/domix24/belodon"},
+        links: %{"github" => "https://github.com/domix24/belodon"},
         description: "Wrapper for Advent of Code with Elixir",
         files: ["lib-dev", "lib", "mix.exs", "template"]
-      ]
+      ],
+      source_url: "github.com/domix24/belodon"
     ]
   end
 
