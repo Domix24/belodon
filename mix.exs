@@ -12,6 +12,12 @@ defmodule Belodon.MixProject do
       dialyzer: [
         plt_add_apps: [:mix],
         plt_local_path: "priv/plts"
+      ],
+      package: [
+        licenses: ["MIT"],
+        links: %{"github" => "github.com/domix24/belodon"},
+        description: "Wrapper for Advent of Code with Elixir",
+        files: ["lib-dev", "lib", "mix.exs", "template"]
       ]
     ]
   end
@@ -34,20 +40,20 @@ defmodule Belodon.MixProject do
     ]
   end
 
-  # Directories to fin source files. Defaults to ["lib"] (from Mix compile.elixir)
-  defp elixirc_paths(:dev) do
-    [
-      "lib",
-      # mocks
-      "lib-dev"
-    ]
-  end
-
+  # Directories to find source files. Defaults to ["lib"] (from Mix compile.elixir)
   defp elixirc_paths(:test) do
     [
       "lib",
       # mocks
       "lib-test"
+    ]
+  end
+
+  defp elixirc_paths(_) do
+    [
+      "lib",
+      # mocks
+      "lib-dev"
     ]
   end
 end

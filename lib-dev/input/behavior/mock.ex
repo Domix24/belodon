@@ -8,6 +8,8 @@ defmodule Belodon.Input.Behavior.Mock do
     Tesla.client([
       {Tesla.Middleware.BaseUrl, System.get_env("BELODON_URL")},
       {Tesla.Middleware.Headers, [{"cookie", "session=#{get_cookie!()}"}]},
+      {Tesla.Middleware.Headers, [{"user-agent", "github.com/domix24/belodon"}]},
+      {Tesla.Middleware.JSON, engine: JSON}
     ])
   end
 
