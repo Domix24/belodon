@@ -1,10 +1,10 @@
-defmodule Aletopelta.Year<%= year %>.Day<%= day %> do
+defmodule Aletopelta.Year2024.Day09 do
   @moduledoc """
-  Day <%= short_day %> of Year <%= year %>
+  Day 9 of Year 2024
   """
   defmodule Common do
     @moduledoc """
-    Common part for Day <%= short_day %>
+    Common part for Day 9
     """
     def parse_input(input) do
     end
@@ -12,7 +12,7 @@ defmodule Aletopelta.Year<%= year %>.Day<%= day %> do
 
   defmodule Part1 do
     @moduledoc """
-    Part 1 of Day <%= short_day %>
+    Part 1 of Day 9
     """
     def execute(input) do
       Common.parse_input(input)
@@ -21,7 +21,7 @@ defmodule Aletopelta.Year<%= year %>.Day<%= day %> do
 
   defmodule Part2 do
     @moduledoc """
-    Part 2 of Day <%= short_day %>
+    Part 2 of Day 9
     """
     def execute(input) do
       Common.parse_input(input)

@@ -13,6 +13,14 @@ defmodule BelodonTest do
     end
   end
 
+  setup_all do
+    on_exit(fn ->
+      [File.cwd!(), "input", "9999"]
+      |> Path.join()
+      |> File.rm_rf()
+    end)
+  end
+
   test "greets the world" do
     assert Belodon.hello() == :world
   end

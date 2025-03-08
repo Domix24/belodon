@@ -35,6 +35,7 @@ defmodule Mix.Tasks.Belodon.Create do
 
     year = "#{valid_year}"
     day = String.slice("0#{valid_day}", -2, 2)
+    short_day = "#{valid_day}"
 
     template_solution = get_template("solution.eex")
     template_test = get_template("test.eex")
@@ -50,7 +51,11 @@ defmodule Mix.Tasks.Belodon.Create do
     |> Path.dirname()
     |> File.mkdir_p!()
 
-    File.write!(path_solution, EEx.eval_file(template_solution, year: year, day: day))
+    File.write!(
+      path_solution,
+      EEx.eval_file(template_solution, year: year, day: day, short_day: short_day)
+    )
+
     File.write!(path_test, EEx.eval_file(template_test, year: year, day: day))
   end
 
