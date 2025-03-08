@@ -1,0 +1,2 @@
+# .eex files are not html
+template/*.eex linguist-language=elixir
