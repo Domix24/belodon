@@ -1,4 +1,4 @@
-defmodule Aletopelta.Year<%= year %>.Day<%= day %> do
+defmodule <%= module %>.Year<%= year %>.Day<%= day %> do
   @moduledoc """
   Day <%= short_day %> of Year <%= year %>
   """

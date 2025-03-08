@@ -1,6 +1,6 @@
-defmodule AletopeltaTest.Year<%= year %>.Day<%= day %> do
+defmodule <%= module %>Test.Year<%= year %>.Day<%= day %> do
   use ExUnit.Case
-  alias Aletopelta.Year<%= year %>.Day<%= day %>, as: Solution
+  alias <%= module %>.Year<%= year %>.Day<%= day %>, as: Solution
 
   test "is part1 working" do
     assert Belodon.solve(Solution, :part1) == 0

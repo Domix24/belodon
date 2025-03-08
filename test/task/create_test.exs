@@ -14,10 +14,13 @@ defmodule MixTest.Tasks.Belodon.Create do
     end)
   end
 
-  test "run without args" do
+  setup do
     System.delete_env("BELODON_TEST_YEAR")
     System.delete_env("BELODON_TEST_DAY")
+    System.delete_env("BELODON_TEST_MODULE")
+  end
 
+  test "run without args" do
     assert_raise ArgumentError, fn ->
       Create.run([])
     end
@@ -27,7 +30,7 @@ defmodule MixTest.Tasks.Belodon.Create do
     path1 = Path.join([File.cwd!(), "lib", "year2024", "day20.ex"])
     path2 = Path.join([File.cwd!(), "test", "year2024", "day20_test.exs"])
 
-    Create.run(["--year=2024", "--day=20"])
+    Create.run(["--year=2024", "--day=20", "--module=Greeny"])
 
     assert File.exists?(path1) and File.exists?(path2)
   end
@@ -35,6 +38,7 @@ defmodule MixTest.Tasks.Belodon.Create do
   test "run with year but day in system variable" do
     System.put_env("BELODON_TEST_YEAR", "abc")
     System.put_env("BELODON_TEST_DAY", "3")
+    System.put_env("BELODON_TEST_MODULE", "MyCoolModule")
 
     path1 = Path.join([File.cwd!(), "lib", "year2024", "day03.ex"])
     path2 = Path.join([File.cwd!(), "test", "year2024", "day03_test.exs"])
@@ -47,6 +51,7 @@ defmodule MixTest.Tasks.Belodon.Create do
   test "two file created with the good template" do
     System.put_env("BELODON_TEST_YEAR", "2024")
     System.put_env("BELODON_TEST_DAY", "9")
+    System.put_env("BELODON_TEST_MODULE", "Aletopelta")
 
     Create.run([])
 

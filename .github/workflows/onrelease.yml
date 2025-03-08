@@ -29,4 +29,4 @@ jobs:
         env:
           HEX_API_KEY: ${{ secrets.HEX_API_KEY }}
         run: |
-          mix hex.publish package --yes
+          mix hex.publish --yes
