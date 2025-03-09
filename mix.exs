@@ -4,7 +4,7 @@ defmodule Belodon.MixProject do
   def project do
     [
       app: :belodon,
-      version: "0.1.0",
+      version: "0.1.1",
       elixir: "~> 1.18",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
@@ -19,7 +19,10 @@ defmodule Belodon.MixProject do
         description: "Wrapper for Advent of Code with Elixir",
         files: ["lib-dev", "lib", "mix.exs", "template"]
       ],
-      source_url: "github.com/domix24/belodon"
+      source_url: "https://github.com/domix24/belodon",
+      docs: [
+        before_closing_body_tag: &before_closing_body_tag/1
+      ]
     ]
   end
 
@@ -34,8 +37,9 @@ defmodule Belodon.MixProject do
   defp deps do
     [
       {:credo, "~> 1.7", only: [:dev, :test], runtime: false},
-      {:tesla, "~> 1.13"},
-      {:dialyxir, "~> 1.4", only: [:dev, :test], runtime: false}
+      {:tesla, "~> 1.14"},
+      {:dialyxir, "~> 1.4", only: [:dev, :test], runtime: false},
+      {:ex_doc, "~> 0.37", only: :dev, runtime: false}
       # {:dep_from_hexpm, "~> 0.3.0"},
       # {:dep_from_git, git: "https://github.com/elixir-lang/my_dep.git", tag: "0.1.0"}
     ]
@@ -56,5 +60,19 @@ defmodule Belodon.MixProject do
       # mocks
       "lib-dev"
     ]
+  end
+
+  defp before_closing_body_tag(:epub), do: ""
+
+  defp before_closing_body_tag(:html) do
+    """
+    <script type="module">
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs"
+
+    mermaid.initialize({
+      theme: "dark"
+    })
+    </script>
+    """
   end
 end

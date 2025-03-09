@@ -44,7 +44,7 @@ jobs:
           mix deps.get --only test
 
       - name: Compile
-        run: mix compile
+        run: MIX_ENV=test mix compile
 
   test:
     name: Test
@@ -76,7 +76,7 @@ jobs:
           fail-on-cache-miss: true
 
       - name: Run tests
-        run: mix test --cover
+        run: MIX_ENV=test mix test --cover
 
   lint:
     runs-on: ubuntu-latest
@@ -111,7 +111,7 @@ jobs:
         run: mix format --check-formatted
 
       - name: Run Credo
-        run: mix credo --strict
+        run: MIX_ENV=test mix credo --strict
 
   dialyze:
     runs-on: ubuntu-latest
@@ -155,7 +155,7 @@ jobs:
 
       - name: Create PLTs
         if: steps.plt.outputs.cache-hit != 'true'
-        run: mix dialyzer --plt
+        run: MIX_ENV=test mix dialyzer --plt
 
       - name: Save PLT cache
         id: plt_save
@@ -168,4 +168,4 @@ jobs:
             priv/plts
 
       - name: Run dialyzer
-        run: mix dialyzer --format github --format dialyxir
+        run: MIX_ENV=test mix dialyzer --format github --format dialyxir

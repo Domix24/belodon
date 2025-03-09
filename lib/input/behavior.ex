@@ -1,6 +1,4 @@
 defmodule Belodon.Input.Behavior do
-  @moduledoc """
-  Input Behavior
-  """
+  @moduledoc false
   @callback fetch_input!(binary) :: Tesla.Env.body()
 end

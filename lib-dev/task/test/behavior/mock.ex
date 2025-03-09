@@ -1,7 +1,5 @@
 defmodule Mix.Tasks.Belodon.Test.Behavior.Mock do
-  @moduledoc """
-  (Dev) Test Behavior
-  """
+  @moduledoc false
   @behaviour Mix.Tasks.Belodon.Test.Behavior
 
   def send path do

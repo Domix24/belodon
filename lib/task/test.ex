@@ -1,17 +1,31 @@
 defmodule Mix.Tasks.Belodon.Test do
   @moduledoc """
-  Runs all the tests of a puzzle with specific parameters.
+  Execute tests for a specific puzzle based on the provided year and day.
 
-  ## Parameters
-  - `--year` (`-y`): Target year for the test. Defaults to the environment variable BELODON_TEST_YEAR.
-  - `--day` (`-d`): Target day for the test. Defaults to the environment variable BELODON_TEST_DAY.
+  This task runs tests for a puzzle by determining the appropriate test file path.
+  It validates the year and day using the function from `Belodon.Types`, ensuring
+  they fall within the allowed ranges.
+  If parameters via the command line, the task defaults to the environment variables
+  `BELODON_TEST_YEAR` and `BELODON_TEST_DAY`.
+
+  ## Command-Line parameters
+
+    - `--year` (`-y`): Target year for the puzzle.
+    Defaults to the value of the environment variable `BELODON_TEST_YEAR`.
+    - `--day` (`-d`): Target day for the puzzle.
+    Default to the value of the environment variable `BELODON_TEST_DAY`.
 
   ## Examples
 
-      $ mix belodon.test --year 2024 --day 25
-      $ mix belodon.test -y 2024 -d 25
+  ````shell
+  # Runs tests for the puzzle from year 2024, day 25
+  $ mix belodon.test --year 2024 --day 25
+  # Alternate invocation using short options
+  $ mix belodon. test -y 2024 -d 25
+  ````
 
-  Runs the task with the `year` parameter set to `2024` and the day parameter set to `25`.
+  The task constructs the test file path in the format
+  `test/year<YEAR>/day<DAY>_test.exs` and then execute the tests.
   """
 
   use Mix.Task

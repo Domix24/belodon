@@ -1,7 +1,5 @@
 defmodule Belodon.Input.Behavior.Mock do
-  @moduledoc """
-  (Dev) Input Behavior
-  """
+  @moduledoc false
   @behaviour Belodon.Input.Behavior
 
   defp create_client do

@@ -1,21 +1,39 @@
 defmodule Mix.Tasks.Belodon.Create do
   @moduledoc """
-  Runs all the tests of a puzzle with specific parameters.
+  Generate boilerplate solution and test files for a specific puzzle based on
+  the given year, day and module prefix.
 
-  ## Parameters
-  - `--year` (`-y`): Target year for the test. Defaults to the environment variable `BELODON_TEST_YEAR`.
-  - `--day` (`-d`): Target day for the test. Defaults to the environment variable `BELODON_TEST_DAY`.
-  - `--module` (`-m`): Prefix for the created modules. Defaults to the environment variable `BELODON_TEST_MODULE`.
+  This Mix task creates two files:
+
+    - A solution file under `lib/year<YEAR>/day<DAY>.ex`, which defines a module
+      for the puzzle's solution.
+    - A test file under `test/year<YEAR>/day<DAY>_test.exs`, which provides a starting
+      point for testing the solution.
+
+  ## Command-Line parameters
+
+    - `--year` (`-y`): Specifies the target year for the puzzle.
+      Defaults to the environment variable `BELODON_TEST_YEAR`.
+    - `--day` (`-d`): Specifies the target day for the puzzle.
+      Defaults to the environment variable `BELODON_TEST_DAY`.
+    - `--module` (`-m`): Specifies the module prefix to be used for the generated modules.
+      Defaults to the environment variable `BELODON_TEST_MODULE`.
 
   ## Examples
 
-      $ mix belodon.test --year 2024 --day 25 --module MyCoolModule
-      $ mix belodon.test -y 2024 -d 25 -m MyCoolModule
+  To create files for the puzzle corresponding to year `2024` and day `25` with
+  a module prefix of `MyCoolModule`, you can run:
 
-  Runs the task with the `year` parameter set to `2024`, the `day` parameter set to `25` and creating two modules
+  ````shell
+  $ mix belodon.create --year 2024 --day 25 --module MyCoolModule
+  # Alternate invocation using short options
+  $ mix belodon.create -y 2024 -d 25 -m MyCoolModule
+  ````
 
-  * `MyCoolModule.Year2024.Day25`
-  * `MyCoolModuleTest.Year2023.Day25`
+  This will generate:
+
+    - A solution file: `lib/year2024/day25.ex` containing the module `MyCoolModule.Year2024.Day25`.
+    - A test file: `lib/year2024/day25_test.exs` containing the tests for the solution.
   """
 
   use Mix.Task
@@ -62,6 +80,7 @@ defmodule Mix.Tasks.Belodon.Create do
     File.write!(path_test, EEx.eval_file(template_test, year: year, day: day, module: module))
   end
 
+  @doc false
   @spec get_defaults() :: [{:day, integer()} | {:module, binary()} | {:year, integer()}]
   def get_defaults do
     year = fetch_int("BELODON_TEST_YEAR", 0)
