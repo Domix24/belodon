@@ -22,6 +22,20 @@ defmodule BelodonTest.Input do
     assert Belodon.Input.get(2024, 25) == expected
   end
 
+  test "trim content while writing to file" do
+    path = Path.join([File.cwd!(), "input", "2025", "26"])
+
+    assert !File.exists?(path)
+    assert Belodon.Input.get(2025, 26) == "new gift\n2025\n26"
+  end
+
+  test "no trim content while writing to file" do
+    path = Path.join([File.cwd!(), "input", "2025", "27"])
+
+    assert !File.exists?(path)
+    assert Belodon.Input.get(2025, 27, trim: false) == "new gift\n2025\n27\n"
+  end
+
   test "get a missing file" do
     path = Path.join([File.cwd!(), "input", "2025", "12"])
 

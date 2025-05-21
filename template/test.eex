@@ -1,5 +1,5 @@
 defmodule <%= module %>Test.Year<%= year %>.Day<%= day %> do
-  use ExUnit.Case
+  use ExUnit.Case, async: true
   alias <%= module %>.Year<%= year %>.Day<%= day %>, as: Solution
 
   test "is part1 working" do
@@ -14,6 +14,6 @@ defmodule <%= module %>Test.Year<%= year %>.Day<%= day %> do
     input = ~s"""
     """
 
-    assert Belodon.solve(Solution, input, :part1) == 0
+    assert Belodon.test(Solution, input, :part1) == 0
   end
 end

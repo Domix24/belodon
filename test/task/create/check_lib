@@ -14,7 +14,7 @@ defmodule Aletopelta.Year2024.Day09 do
     @moduledoc """
     Part 1 of Day 9
     """
-    def execute(input) do
+    def execute(input, opts) do
       Common.parse_input(input)
     end
   end
@@ -23,7 +23,7 @@ defmodule Aletopelta.Year2024.Day09 do
     @moduledoc """
     Part 2 of Day 9
     """
-    def execute(input) do
+    def execute(input, opts) do
       Common.parse_input(input)
     end
   end

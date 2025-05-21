@@ -14,7 +14,7 @@ defmodule <%= module %>.Year<%= year %>.Day<%= day %> do
     @moduledoc """
     Part 1 of Day <%= short_day %>
     """
-    def execute(input) do
+    def execute(input, opts) do
       Common.parse_input(input)
     end
   end
@@ -23,7 +23,7 @@ defmodule <%= module %>.Year<%= year %>.Day<%= day %> do
     @moduledoc """
     Part 2 of Day <%= short_day %>
     """
-    def execute(input) do
+    def execute(input, opts) do
       Common.parse_input(input)
     end
   end

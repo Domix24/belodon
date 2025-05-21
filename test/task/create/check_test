@@ -1,5 +1,5 @@
 defmodule AletopeltaTest.Year2024.Day09 do
-  use ExUnit.Case
+  use ExUnit.Case, async: true
   alias Aletopelta.Year2024.Day09, as: Solution
 
   test "is part1 working" do
@@ -14,6 +14,6 @@ defmodule AletopeltaTest.Year2024.Day09 do
     input = ~s"""
     """
 
-    assert Belodon.solve(Solution, input, :part1) == 0
+    assert Belodon.test(Solution, input, :part1) == 0
   end
 end

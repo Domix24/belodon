@@ -46,13 +46,18 @@ defmodule Belodon.Input do
 
     - `year`: A binary representing the year (e.g., `"2023"`).
     - `day`: A binary representing the day (e.g., `"15"`).
+    - `opts`: A keyword list impacting the way data is stored in the file. See [Options](`get/3#options`).
+
+  ## Options
+
+    - `:trim`: Set to `false` if data should not be trimmed (Default: `true`)
 
   ## Returns
 
     - A binary containing the input data.
   """
-  @spec get(binary(), binary()) :: binary()
-  def get(year, day) do
+  @spec get(binary(), binary(), keyword()) :: binary()
+  def get(year, day, opts \\ []) do
     local_name = build_local_path(year, day)
 
     if !File.exists?(local_name) do
@@ -60,12 +65,17 @@ defmodule Belodon.Input do
       |> build_external_path(day)
       |> Mock.fetch_input!()
       |> Map.fetch!(:body)
-      |> String.trim()
+      |> trim(Keyword.get(opts, :trim, true))
       |> write_file!(local_name)
     end
 
     File.read!(local_name)
   end
+
+  @doc false
+  @spec trim(binary, boolean) :: binary
+  defp trim(content, false), do: content
+  defp trim(content, true), do: String.trim(content)
 
   @doc false
   @spec build_local_path(binary, binary) :: binary
@@ -91,7 +101,7 @@ defmodule Belodon.Input do
 
   ## Returns
 
-    - `ok` upon successful file write.
+    - `:ok` upon successful file write.
   """
   @spec write_file!(iodata, Path.t()) :: :ok
   def write_file!(content, path) do
