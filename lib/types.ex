@@ -7,21 +7,21 @@ defmodule Belodon.Types do
 
   ## Custom Types
 
-    - `t:valid_year/0`: An integer between 2022 and 2024 (inclusive)
+    - `t:valid_year/0`: An integer between 2015 and 3000 (inclusive)
     - `t:valid_day/0`: An integer between 1 and 25 (inclusive).
 
   These types help ensure that year and day values are within the expected bounds.
   """
 
   @typedoc """
-  Represents a valid year for the challenge, an integer between 2022 and 2024 (inclusive).
+  Represents a valid year for the challenge, an integer between 2015 and 3000 (inclusive).
 
   ## Examples
 
-      iex> is_integer(2023) and 2022 <= 2023 and 2023 <= 2024
+      iex> is_integer(2023) and 2015 <= 2023 and 2023 <= 3000
       true
   """
-  @type valid_year :: 2022..2024
+  @type valid_year :: 2015..3000
 
   @typedoc """
   Represents a valid day for the challenge, an integer between 1 and 25 (inclusive).
@@ -34,7 +34,7 @@ defmodule Belodon.Types do
   @type valid_day :: 1..25
 
   @doc """
-  Validates that the given year is within the allowed range (2022 to 2024).
+  Validates that the given year is within the allowed range (2015 to 3000).
 
   ## Parameters
 
@@ -49,16 +49,16 @@ defmodule Belodon.Types do
       iex> Belodon.Types.validate_year!(2024)
       2024
 
-      iex> Belodon.Types.validate_year!(2025)
-      ** (ArgumentError) Year must be between 2022 and 2024.
+      iex> Belodon.Types.validate_year!(2014)
+      ** (ArgumentError) Year must be between 2015 and 3000.
 
   ## Errors
 
   Raises an `ArgumentError` if the provided year is not within the allowed range.
   """
   @spec validate_year!(integer()) :: valid_year
-  def validate_year!(year) when year in 2022..2024, do: year
-  def validate_year!(_), do: raise(ArgumentError, message: "Year must be between 2022 and 2024.")
+  def validate_year!(year) when year in 2015..3000, do: year
+  def validate_year!(_), do: raise(ArgumentError, message: "Year must be between 2015 and 3000.")
 
   @doc """
   Validates that the given day is within the allowed range (1 to 25).

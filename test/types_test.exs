@@ -3,13 +3,13 @@ defmodule BelodonTest.Types do
   doctest Belodon.Types
 
   test "a valid year" do
-    for year <- [2022, 2023, 2024] do
+    for year <- [2015, 2022, 2023, 2024, 3000] do
       assert Belodon.Types.validate_year!(year) == year
     end
   end
 
   test "not a year in range" do
-    for year <- [2021, 2025] do
+    for year <- [2014, 3001] do
       assert_raise ArgumentError, fn ->
         Belodon.Types.validate_year!(year)
       end
