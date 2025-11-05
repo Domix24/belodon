@@ -37,6 +37,7 @@ jobs:
           path: |
             deps
             _build
+            mix.lock
 
       - name: Install depencencies
         if: steps.cache.outputs.cache-hit != 'true'
@@ -73,6 +74,7 @@ jobs:
           path: |
             deps
             _build
+            mix.lock
           fail-on-cache-miss: true
 
       - name: Run tests
@@ -105,6 +107,7 @@ jobs:
           path: |
             deps
             _build
+            mix.lock
           fail-on-cache-miss: true
 
       - name: Run formatter
@@ -140,6 +143,7 @@ jobs:
           path: |
             deps
             _build
+            mix.lock
           fail-on-cache-miss: true
 
       - name: Restore PLT cache
