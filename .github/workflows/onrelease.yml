@@ -18,8 +18,8 @@ jobs:
       - name: Setup Elixir
         uses: erlef/setup-beam@v1
         with:
-          elixir-version: 1.18-otp-27
-          otp-version: otp-27
+          elixir-version: latest
+          otp-version: latest
 
       - name: Fetch dependencies
         run: |

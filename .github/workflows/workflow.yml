@@ -7,8 +7,8 @@ on:
       - main
 
 env:
-  ELIXIR_VERSION: 1.18-otp-27
-  OTP_VERSION: otp-27
+  ELIXIR_VERSION: latest
+  OTP_VERSION: latest
 
 jobs:
   prepare:
